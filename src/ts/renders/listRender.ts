@@ -14,8 +14,9 @@ export function listRender(state: State): void {
     "December",
   ];
 
-  const list = document.querySelector(".taskList");
-  list.innerHTML = "";
+  const appBlock = document.querySelector(".app");
+  const list = document.createElement("div");
+  list.classList.add("taskList");
 
   state.Tasks.forEach((el) => {
     const elDate = new Date(el.date);
@@ -43,4 +44,7 @@ export function listRender(state: State): void {
     taskItemBlock.append(taskDateHeader, taskDescription, taskStatus, taskTag);
     list.append(taskItemBlock);
   });
+
+  appBlock.innerHTML = "";
+  appBlock.append(list);
 }

@@ -77,5 +77,6 @@ export function calendarRender(state: State, date?: number): void {
     workDate.setDate(workDate.getDate() + 1);
   }
 
-  document.querySelector(".calendarTable").innerHTML = table.innerHTML;
+  document.querySelector(".app").innerHTML = "";
+  document.querySelector(".app").append(table);
 }

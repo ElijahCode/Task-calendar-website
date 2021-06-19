@@ -3,8 +3,7 @@ import "../types";
 
 const layout = document.createElement("div");
 layout.innerHTML = `
-<div class="calendarBlock">
-<table class="calendarTable"></table>
+<div class="app">
 </div>
 `;
 
@@ -38,10 +37,8 @@ const state: State = {
 
 describe("Testing calenderRender function", () => {
   it("Testing basic render", () => {
-    const table: HTMLTableElement = document.querySelector(".calendarTable");
-
     calendarRender(null, inputDate);
-
+    const table: HTMLTableElement = document.querySelector(".calendarTable");
     expect(document.querySelector(".calendarTable")).toBeTruthy();
 
     expect(document.querySelector(".tableCaption")).toBeTruthy();

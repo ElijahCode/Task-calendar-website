@@ -2,7 +2,7 @@ import { listRender } from "./listRender";
 import "../types";
 
 document.body.innerHTML = `
-<div class="taskList"></div>
+<div class="app"></div>
 `;
 
 const state: State = {
