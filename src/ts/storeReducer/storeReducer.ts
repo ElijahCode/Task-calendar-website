@@ -11,7 +11,6 @@ export function storeReducerCreator(initState) {
   return createReducer(initState, (builder) => {
     builder
       .addCase(addTaskActionCreator, (state, action: Action) => {
-        console.log(action.payload);
         state.push(action.payload);
       })
       .addCase(updateTaskActionCreator, (state, action: Action) => {
@@ -37,9 +36,11 @@ export function storeReducerCreator(initState) {
       .addCase(
         loadTaskListFromStorageActionCreator,
         (state, action: Action) => {
+          const newState = [];
           action.payload.forEach((task: Task) => {
-            state.push(task);
+            newState.push(task);
           });
+          return newState;
         }
       );
   });

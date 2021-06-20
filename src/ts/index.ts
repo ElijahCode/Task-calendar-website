@@ -26,7 +26,6 @@ import "./css/style.css";
   });
 
   store.dispatch(loadTaskListFromStorageActionCreator(tasks as Task[]));
-
   router.on("/calendar", { onEnter: calendarRender });
   router.on("/list", { onEnter: listRender });
   router.on("/about", { onEnter: aboutRender });
