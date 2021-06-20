@@ -2,11 +2,12 @@ import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { closeModalAddTask } from "./modalWindow/closeModal";
 import { addTaskActionCreator } from "../actions/actions";
+import { createID } from "../createID/createID";
 
-export function addTaskHandler(
+export async function addTaskHandler(
   store: EnhancedStore,
   localStorage: LocalStorage.TaskCalendar
-): void {
+): Promise<void> {
   const inputDate: HTMLInputElement = document.querySelector(
     ".modal-add-task-input-date"
   );
@@ -20,16 +21,17 @@ export function addTaskHandler(
     ".modal-add-task-input-tag"
   );
 
-  const newTask: Task = {
+  let newTask: Task = {
     date: inputDate.value,
     description: inputDescription.value,
     status: inputStatus.value as Task["status"],
     tag: inputTag.value as Task["tag"],
   };
 
-  localStorage.createTask(newTask);
+  newTask = createID(newTask, store);
+
+  await localStorage.createTask(newTask);
   store.dispatch(addTaskActionCreator(newTask));
-  console.log(store.getState());
 
   inputDate.value = "";
   inputDescription.value = "";
