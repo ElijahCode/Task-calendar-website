@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@elijahcode/router": "^2.1.1",
-    "@elijahcode/taskcalendarapi": "^1.0.0",
+    "@elijahcode/taskcalendarapi": "^1.1.0",
     "@reduxjs/toolkit": "^1.6.0"
   }
 }

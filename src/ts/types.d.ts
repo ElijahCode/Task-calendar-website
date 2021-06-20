@@ -7,7 +7,9 @@ declare interface Task {
   id?: number;
 }
 
-declare interface State {
-  calendarMenuDate: number;
-  Tasks: Task[];
+declare type State = Task[];
+
+declare interface Action {
+  [key: string]: any;
+  type: string;
 }

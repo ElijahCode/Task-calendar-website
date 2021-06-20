@@ -4,14 +4,43 @@
   </head>
   <body>
     <nav>
-      <button class="button_goToCalendar">Calendar</button>
-      <button class="button_goToList">List</button>
-      <button class="button_goToAbout">About</button>
+      <a href="/calendar">Calendar</a>
+      <a href="/list">List</a>
+      <a href="/about">About</a>
     </nav>
     <div class="searchBlock">
       <input type="search" class="searchInput" placeholder="Enter a task..." />
       <button class="button_search"></button>
     </div>
     <div class="app"></div>
+    <div class="modal-add-task">
+      <p class="modal-add-task-parag">Date:</p>
+      <input type="text" class="modal-add-task-input-date" />
+      <p class="modal-add-task-parag">Description:</p>
+      <input type="text" class="modal-add-task-input-description" />
+      <p class="modal-add-task-parag">Status:</p>
+      <input type="text" class="modal-add-task-input-status" />
+      <p class="modal-add-task-parag">Tag:</p>
+      <input type="text" class="modal-add-task-input-status" />
+      <button class="button-add-task">Add task</button>
+      <button class="button-add-task-cancel">Cancel</button>
+    </div>
+    <div class="modal-change-task">
+      <p class="modal-change-task-parag">Date:</p>
+      <input type="text" class="modal-change-task-input-date" />
+      <p class="modal-change-task-parag">Description:</p>
+      <input type="text" class="modal-change-task-input-description" />
+      <p class="modal-change-task-parag">Status:</p>
+      <input type="text" class="modal-change-task-input-status" />
+      <p class="modal-change-task-parag">Tag:</p>
+      <input type="text" class="modal-change-task-input-status" />
+      <button class="button-change-task">Add task</button>
+      <button class="button-change-task-cancel">Cancel</button>
+    </div>
+    <div class="modal-delete-task">
+      <p class="modal-change-delete-parag">Are you sure?</p>
+      <button class="button-delete-task">Delete task</button>
+      <button class="button-delete-task-cancel">Cancel</button>
+    </div>
   </body>
 </html>

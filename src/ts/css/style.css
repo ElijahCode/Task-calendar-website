@@ -1,0 +1,9 @@
+.modal-add-task {
+  visibility: hidden;
+}
+.modal-change-task {
+  visibility: hidden;
+}
+.modal-delete-task {
+  visibility: hidden;
+}

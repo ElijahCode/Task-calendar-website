@@ -1,3 +1,5 @@
+import { activateModalAddTask } from "../handlers/activateModal";
+
 export function calendarRender(state: State, date?: number): void {
   const months = [
     "January",
@@ -51,7 +53,7 @@ export function calendarRender(state: State, date?: number): void {
   while (workDate.getMonth() === insideDate.getMonth()) {
     if (
       workDate.getDate() === 1 ||
-      table.rows[table.rows.length - 1].cells[6].innerText !== undefined
+      table.rows[table.rows.length - 1].cells[6].innerText !== ""
     ) {
       const newRow = table.insertRow();
       newRow.classList.add("row_day");
@@ -66,9 +68,8 @@ export function calendarRender(state: State, date?: number): void {
     changedCell.classList.remove("cell_empty");
     if (
       state &&
-      state.Tasks.filter(
-        (el) => new Date(el.date).getDate() === workDate.getDate()
-      ).length > 0
+      state.filter((el) => new Date(el.date).getDate() === workDate.getDate())
+        .length > 0
     ) {
       changedCell.classList.add("cell_haveTask");
     } else {
@@ -77,6 +78,7 @@ export function calendarRender(state: State, date?: number): void {
     workDate.setDate(workDate.getDate() + 1);
   }
 
+  table.addEventListener("click", activateModalAddTask);
   document.querySelector(".app").innerHTML = "";
   document.querySelector(".app").append(table);
 }
