@@ -1,4 +1,4 @@
-import { activateModalAddTask } from "../handlers/activateModal";
+import { activateModalAddTask } from "../handlers/modalWindow/activateModal";
 
 export function calendarRender(state: State, date?: number): void {
   const months = [

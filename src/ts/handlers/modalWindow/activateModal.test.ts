@@ -5,7 +5,10 @@ import {
 } from "./activateModal";
 
 const layout = document.createElement("div");
-layout.innerHTML = `<div class = "modal-add-task"></div><div class = "modal-change-task"></div><div class = "modal-delete-task"></div>`;
+layout.innerHTML = `<div class = "modal-add-task"></div>
+<div class = "modal-change-task"></div>
+<div class = "modal-delete-task"></div><div class="tableCaption">June 2021</div>
+<input class="modal-add-task-input-date" value="">`;
 document.body.append(layout);
 
 const addTaskDiv: HTMLDivElement = document.querySelector(".modal-add-task");
@@ -22,8 +25,19 @@ deleteTaskDiv.style.visibility = "hidden";
 
 describe("Test activate function", () => {
   it("Test activateModalFunction", () => {
-    activateModalAddTask();
+    const elem = document.createElement("td");
+    elem.innerText = "20";
+
+    const ev = {
+      target: elem,
+    };
+
+    activateModalAddTask(ev);
     expect(addTaskDiv.style.visibility).toBe("visible");
+    expect(
+      (document.querySelector(".modal-add-task-input-date") as HTMLInputElement)
+        .value
+    ).toBe("2021-06-20");
   });
   it("Test chagneModalFunction", () => {
     activateModalChangeTask();

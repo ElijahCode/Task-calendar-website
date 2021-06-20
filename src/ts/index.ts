@@ -1,7 +1,7 @@
 import { createRouter } from "@elijahcode/router";
 import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { configureStore } from "@reduxjs/toolkit";
-import { storeReducer } from "./storeReducer/storeReducer";
+import { storeReducerCreator } from "./storeReducer/storeReducer";
 import { calendarRender } from "./renders/calendarRender";
 import { listRender } from "./renders/listRender";
 import { aboutRender } from "./renders/aboutRender";
@@ -9,12 +9,14 @@ import {
   closeModalAddTask,
   closeModalChangeTask,
   closeModalDeleteTask,
-} from "./handlers/closeModal";
+} from "./handlers/modalWindow/closeModal";
+import { addTaskHandler } from "./handlers/addTaskHandler";
 import "./css/style.css";
 
 const router = createRouter("history");
 const localTaskStorage = new LocalStorage.TaskCalendar();
 const initialState = [];
+const storeReducer = storeReducerCreator(initialState);
 
 const store = configureStore({
   reducer: storeReducer,
@@ -29,9 +31,22 @@ document.body.addEventListener("click", (ev) => {
   if ((ev.target as HTMLElement).matches("a")) {
     ev.preventDefault();
     const url = (ev.target as HTMLElement).getAttribute("href");
-    router.go(url);
+
+    if (url === "/list") {
+      router.go(url, { onEnter: [store.getState()] });
+    } else {
+      router.go(url);
+    }
   }
 });
+
+(document.querySelector(
+  ".button-add-task"
+) as HTMLButtonElement).addEventListener(
+  "click",
+  addTaskHandler.bind(null, store, localTaskStorage),
+  true
+);
 
 document
   .querySelector(".button-add-task-cancel")
