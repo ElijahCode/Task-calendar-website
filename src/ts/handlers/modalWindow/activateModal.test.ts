@@ -9,7 +9,8 @@ layout.innerHTML = `<div class = "modal-add-task"></div>
 <div class = "modal-change-task"></div>
 <div class = "modal-delete-task"></div><div class="tableCaption">June 2021</div>
 <input class="modal-add-task-input-date" value="">
-<button class=button-change-task><>`;
+<button class=button-change-task></button>
+<button class=button-delete-task></button>`;
 document.body.append(layout);
 
 const addTaskDiv: HTMLDivElement = document.querySelector(".modal-add-task");
@@ -53,7 +54,15 @@ describe("Test activate function", () => {
     expect(changeTaskDiv.style.visibility).toBe("visible");
   });
   it("Test deleteModalFunction", () => {
-    activateModalDeleteTask();
+    const targetParent = document.createElement("div");
+    targetParent.id = "5";
+    const targetBut = document.createElement("button");
+    targetParent.append(targetBut);
+
+    const event = {
+      target: targetBut,
+    };
+    activateModalDeleteTask(event);
     expect(deleteTaskDiv.style.visibility).toBe("visible");
   });
 });

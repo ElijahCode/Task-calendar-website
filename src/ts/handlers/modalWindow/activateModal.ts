@@ -41,7 +41,9 @@ export function activateModalChangeTask(event): void {
   document.querySelector(".button-change-task").id = taskBlockID;
 }
 
-export function activateModalDeleteTask(): void {
+export function activateModalDeleteTask(event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-delete-task");
   modal.style.visibility = "visible";
+  const taskBlockID = (event.target as HTMLElement).closest("div").id;
+  document.querySelector(".button-delete-task").id = taskBlockID;
 }

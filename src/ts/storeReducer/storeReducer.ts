@@ -27,11 +27,8 @@ export function storeReducerCreator(initState) {
         return state;
       })
       .addCase(deleteTaskActionCreator, (state, action: Action) => {
-        const newState = [...state].filter(
-          (el) => el.id !== action.payload.task.id
-        );
-        newState.splice(0);
-        newState.push(...newState);
+        const newState = [...state].filter((el) => el.id !== action.payload);
+        return newState;
       })
       .addCase(
         loadTaskListFromStorageActionCreator,

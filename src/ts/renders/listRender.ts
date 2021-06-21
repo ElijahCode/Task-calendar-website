@@ -1,4 +1,7 @@
-import { activateModalChangeTask } from "../handlers/modalWindow/activateModal";
+import {
+  activateModalChangeTask,
+  activateModalDeleteTask,
+} from "../handlers/modalWindow/activateModal";
 
 export function listRender(state: State): void {
   const months = [
@@ -48,11 +51,30 @@ export function listRender(state: State): void {
     taskTag.classList.add("taskTag");
     taskTag.innerHTML = `Tag: ${el.tag}`;
 
-    taskItemBlock.append(taskDateHeader, taskDescription, taskStatus, taskTag);
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("button-delete-this-task");
+    deleteButton.innerText = "Delete Task";
+
+    taskItemBlock.append(
+      taskDateHeader,
+      taskDescription,
+      taskStatus,
+      taskTag,
+      deleteButton
+    );
     list.append(taskItemBlock);
   });
 
-  list.addEventListener("click", activateModalChangeTask, true);
+  list.addEventListener("click", (event) => {
+    if (!(event.target as HTMLElement).matches("button")) {
+      activateModalChangeTask(event);
+    }
+  });
+  list.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).matches("button")) {
+      activateModalDeleteTask(event);
+    }
+  });
 
   appBlock.innerHTML = "";
   appBlock.append(list);
