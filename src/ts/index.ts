@@ -12,6 +12,7 @@ import {
   closeModalDeleteTask,
 } from "./handlers/modalWindow/closeModal";
 import { addTaskHandler } from "./handlers/addTaskHandler";
+import { createUpdateTaskFunction } from "./handlers/updateTaskHandler";
 import "./css/style.css";
 
 (async function main() {
@@ -24,6 +25,8 @@ import "./css/style.css";
     reducer: storeReducer,
     preloadedState: initialState,
   });
+
+  const updateTask = createUpdateTaskFunction(store, localTaskStorage);
 
   store.dispatch(loadTaskListFromStorageActionCreator(tasks as Task[]));
   router.on("/calendar", { onEnter: calendarRender });
@@ -50,6 +53,10 @@ import "./css/style.css";
     addTaskHandler.bind(null, store, localTaskStorage),
     true
   );
+
+  document
+    .querySelector(".button-change-task")
+    .addEventListener("click", await updateTask);
 
   document
     .querySelector(".button-add-task-cancel")

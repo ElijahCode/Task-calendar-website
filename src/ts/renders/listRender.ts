@@ -1,3 +1,5 @@
+import { activateModalChangeTask } from "../handlers/modalWindow/activateModal";
+
 export function listRender(state: State): void {
   const months = [
     "January",
@@ -49,6 +51,8 @@ export function listRender(state: State): void {
     taskItemBlock.append(taskDateHeader, taskDescription, taskStatus, taskTag);
     list.append(taskItemBlock);
   });
+
+  list.addEventListener("click", activateModalChangeTask, true);
 
   appBlock.innerHTML = "";
   appBlock.append(list);

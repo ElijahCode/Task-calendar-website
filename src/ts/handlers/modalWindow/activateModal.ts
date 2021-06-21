@@ -34,9 +34,11 @@ export function activateModalAddTask(ev): void {
   inputDate.value = `${year}-${numberOfMonth}-${day}`;
 }
 
-export function activateModalChangeTask(): void {
+export function activateModalChangeTask(event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-change-task");
   modal.style.visibility = "visible";
+  const taskBlockID = (event.target as HTMLElement).closest("div").id;
+  document.querySelector(".button-change-task").id = taskBlockID;
 }
 
 export function activateModalDeleteTask(): void {
