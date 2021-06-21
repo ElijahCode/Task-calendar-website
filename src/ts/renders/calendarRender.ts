@@ -1,6 +1,8 @@
+import { EnhancedStore } from "@reduxjs/toolkit";
 import { activateModalAddTask } from "../handlers/modalWindow/activateModal";
+import { createCalendarSwitchers } from "../handlers/calendarSwitcher/calendarSwithcer";
 
-export function calendarRender(state: State, date?: number): void {
+export function calendarRender(store: EnhancedStore, date?: number): void {
   const months = [
     "January",
     "February",
@@ -25,9 +27,12 @@ export function calendarRender(state: State, date?: number): void {
     "Friday",
     "Saturday",
   ];
+  const state = store.getState();
+
   const insideDate = date !== undefined ? new Date(date) : new Date();
   const table: HTMLTableElement = document.createElement("table");
   table.classList.add("calendarTable");
+
   const tableCaption = table.createCaption();
   tableCaption.classList.add("tableCaption");
   tableCaption.innerHTML = `<button class = "button_goBack">&lArr;</button><p class=tableCaptionText>${
@@ -78,7 +83,23 @@ export function calendarRender(state: State, date?: number): void {
     workDate.setDate(workDate.getDate() + 1);
   }
 
-  table.addEventListener("click", activateModalAddTask);
+  table.addEventListener("click", (event) => {
+    if (!(event.target as HTMLElement).matches("button")) {
+      activateModalAddTask(event);
+    }
+  });
   document.querySelector(".app").innerHTML = "";
   document.querySelector(".app").append(table);
+
+  const [calendarIncrementer, calendarDecrementer] = createCalendarSwitchers(
+    store,
+    insideDate
+  );
+
+  document
+    .querySelector(".button_goForward")
+    .addEventListener("click", calendarIncrementer);
+  document
+    .querySelector(".button_goBack")
+    .addEventListener("click", calendarDecrementer);
 }

@@ -31,7 +31,7 @@ import "./css/style.css";
   const deleteTask = createDeleteTaskFunction(store, localTaskStorage);
 
   store.dispatch(loadTaskListFromStorageActionCreator(tasks as Task[]));
-  router.on("/calendar", { onEnter: calendarRender });
+  router.on("/calendar", { onEnter: calendarRender.bind(null, store) });
   router.on("/list", { onEnter: listRender });
   router.on("/about", { onEnter: aboutRender });
 

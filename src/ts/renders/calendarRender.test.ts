@@ -1,3 +1,4 @@
+import { configureStore } from "@reduxjs/toolkit";
 import { calendarRender } from "./calendarRender";
 import "../types";
 
@@ -32,9 +33,21 @@ const state: State = [
   },
 ];
 
+const store = configureStore({
+  preloadedState: state,
+  reducer: (storageState, action) => storageState,
+});
+
+store.dispatch({ type: "SOME_ACTION" });
+
+const emptyStore = configureStore({
+  preloadedState: [],
+  reducer: (storageState, action) => storageState,
+});
+
 describe("Testing calenderRender function", () => {
   it("Testing basic render", () => {
-    calendarRender(null, inputDate);
+    calendarRender(emptyStore, inputDate);
     const table: HTMLTableElement = document.querySelector(".calendarTable");
     expect(document.querySelector(".calendarTable")).toBeTruthy();
 
@@ -51,7 +64,7 @@ describe("Testing calenderRender function", () => {
   });
 
   it("Testing render with influence of state", () => {
-    calendarRender(state);
+    calendarRender(store);
 
     expect(document.querySelectorAll(".cell_haveTask").length).toBe(3);
   });
