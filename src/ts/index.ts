@@ -58,7 +58,7 @@ import "./css/style.css";
       const url = (ev.target as HTMLElement).getAttribute("href");
 
       if (url === "/list") {
-        router.go(url, { onEnter: [store.getState()] });
+        router.go(url, { onEnter: [store] });
       } else {
         router.go(url);
       }

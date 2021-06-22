@@ -1,7 +1,7 @@
 import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { deleteTaskActionCreator } from "../actions/actions";
-import { listRender } from "../renders/listRender";
+import { taskListRender } from "../renders/taskListRender";
 
 export async function createDeleteTaskFunction(
   store: EnhancedStore,
@@ -13,6 +13,6 @@ export async function createDeleteTaskFunction(
     await localStorage.delete(taskID);
     store.dispatch(deleteTaskActionCreator(taskID));
 
-    listRender(store.getState());
+    taskListRender(store.getState());
   };
 }

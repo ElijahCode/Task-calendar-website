@@ -2,7 +2,7 @@ import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { updateTaskActionCreator } from "../actions/actions";
 import { closeModalChangeTask } from "../handlers/modalWindow/closeModal";
-import { listRender } from "../renders/listRender";
+import { taskListRender } from "../renders/taskListRender";
 
 export async function createUpdateTaskFunction(
   store: EnhancedStore,
@@ -49,6 +49,6 @@ export async function createUpdateTaskFunction(
 
     closeModalChangeTask();
 
-    listRender(store.getState());
+    taskListRender(store.getState());
   };
 }
