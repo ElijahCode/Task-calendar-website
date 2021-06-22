@@ -31,9 +31,26 @@ import "./css/style.css";
   const deleteTask = createDeleteTaskFunction(store, localTaskStorage);
 
   store.dispatch(loadTaskListFromStorageActionCreator(tasks as Task[]));
+
   router.on("/calendar", { onEnter: calendarRender.bind(null, store) });
   router.on("/list", { onEnter: listRender });
   router.on("/about", { onEnter: aboutRender });
+
+  window.onpopstate = (event) => {
+    event.preventDefault();
+    // eslint-disable-next-line no-restricted-globals
+    const path = location.pathname;
+    switch (path) {
+      case "/calendar":
+        calendarRender(store);
+        break;
+      case "/list":
+        listRender(store.getState());
+        break;
+      default:
+        aboutRender();
+    }
+  };
 
   document.body.addEventListener("click", (ev) => {
     if ((ev.target as HTMLElement).matches("a")) {
