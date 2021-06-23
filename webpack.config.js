@@ -7,6 +7,7 @@ module.exports = {
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/webpack-gh-pages/",
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
@@ -17,6 +18,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./src/html/index.html"),
       filename: "index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "./src/html/index.html"),
+      filename: "404.html",
     }),
     new MiniCssExtractPlugin(),
   ],
