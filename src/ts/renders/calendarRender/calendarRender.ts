@@ -1,5 +1,5 @@
 import { EnhancedStore } from "@reduxjs/toolkit";
-import { activateModalAddTask } from "../../handlers/modalWindow/activateModal";
+import { activateModalChooseAction } from "../../handlers/modalWindow/activateModal";
 import { createCalendarSwitchers } from "../../handlers/calendarSwitcher/calendarSwithcer";
 
 export function calendarRender(store: EnhancedStore, date?: number): void {
@@ -85,7 +85,7 @@ export function calendarRender(store: EnhancedStore, date?: number): void {
 
   table.addEventListener("click", (event) => {
     if (!(event.target as HTMLElement).matches("button")) {
-      activateModalAddTask(event);
+      activateModalChooseAction(event);
     }
   });
   document.querySelector(".app").innerHTML = "";

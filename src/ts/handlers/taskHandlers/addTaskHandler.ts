@@ -2,6 +2,7 @@ import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { closeModalAddTask } from "../modalWindow/closeModal";
 import { addTaskActionCreator } from "../../actions/actions";
+import { taskListRender } from "../../renders/listRender/taskListRender";
 import { createID } from "../../createID/createID";
 
 export async function addTaskHandler(
@@ -39,4 +40,8 @@ export async function addTaskHandler(
   inputTag.value = "";
 
   closeModalAddTask();
+
+  if (document.querySelector(".taskList")) {
+    taskListRender(store.getState());
+  }
 }

@@ -1,13 +1,14 @@
 import { createRouter } from "@elijahcode/router";
 import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { configureStore } from "@reduxjs/toolkit";
-import { fuzzySearchCreator } from "./fuzzy-searchFunCreator/fuzzy-searchFunCreator";
 import { storeReducerCreator } from "./storeReducer/storeReducer";
 import { loadTaskListFromStorageActionCreator } from "./actions/actions";
 import { calendarRender } from "./renders/calendarRender/calendarRender";
 import { listRender } from "./renders/listRender/listRender";
 import { aboutRender } from "./renders/aboutRender/aboutRender";
+import { activateModalAddTask } from "./handlers/modalWindow/activateModal";
 import {
+  closeModalChooseAction,
   closeModalAddTask,
   closeModalChangeTask,
   closeModalDeleteTask,
@@ -17,6 +18,7 @@ import { createSearchHandler } from "./handlers/searchHandlers/createSearchHandl
 import { createInputAutoCompleteHandler } from "./handlers/searchHandlers/createInputAutoCompleteHandler";
 import { createUpdateTaskFunction } from "./handlers/taskHandlers/updateTaskHandler";
 import { createDeleteTaskFunction } from "./handlers/taskHandlers/deleteTask";
+import { createViewTaskHandler } from "./handlers/createViewTaskHandler/createViewTaskHandler";
 import "./css/style.css";
 
 (async function main() {
@@ -35,6 +37,7 @@ import "./css/style.css";
 
   const searchHandler = createSearchHandler(store, router);
   const inputAutoCompleteHandler = createInputAutoCompleteHandler(store);
+  const viewTaskHandler = createViewTaskHandler(store, router);
 
   store.dispatch(loadTaskListFromStorageActionCreator(tasks as Task[]));
 
@@ -103,12 +106,30 @@ import "./css/style.css";
   );
 
   document
+    .querySelector(".modal-choose-action-button-add")
+    .addEventListener("click", (event) => {
+      activateModalAddTask(event);
+      closeModalChooseAction();
+    });
+
+  document
+    .querySelector(".modal-choose-action-button-view-or-update")
+    .addEventListener("click", (event) => {
+      viewTaskHandler(event);
+      closeModalChooseAction();
+    });
+
+  document
     .querySelector(".button-change-task")
     .addEventListener("click", await updateTask);
 
   document
     .querySelector(".button-delete-task")
     .addEventListener("click", await deleteTask);
+
+  document
+    .querySelector(".modal-choose-action-button-cancel")
+    .addEventListener("click", closeModalChooseAction);
 
   document
     .querySelector(".button-add-task-cancel")

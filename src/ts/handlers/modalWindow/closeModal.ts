@@ -1,3 +1,8 @@
+export function closeModalChooseAction(): void {
+  const modal: HTMLDivElement = document.querySelector(".modal-choose-action");
+  modal.style.visibility = "hidden";
+}
+
 export function closeModalAddTask(): void {
   const modal: HTMLDivElement = document.querySelector(".modal-add-task");
   modal.style.visibility = "hidden";

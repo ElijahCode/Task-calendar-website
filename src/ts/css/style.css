@@ -7,6 +7,9 @@
 .modal-delete-task {
   visibility: hidden;
 }
+.modal-choose-action {
+  visibility: hidden;
+}
 
 .taskItem {
   border: 2px solid gray;

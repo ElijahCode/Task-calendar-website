@@ -28,7 +28,7 @@ deleteTaskDiv.style.visibility = "hidden";
 describe("Test activate function", () => {
   it("Test activateModalFunction", () => {
     const elem = document.createElement("td");
-    elem.innerText = "20";
+    elem.id = "20";
 
     const ev = {
       target: elem,
