@@ -9,8 +9,14 @@
       <a href="/about">About</a>
     </nav>
     <div class="searchBlock">
-      <input type="search" class="searchInput" placeholder="Enter a task..." />
-      <button class="button_search"></button>
+      <input
+        type="search"
+        class="searchInput"
+        placeholder="Enter a task description"
+        list="descriptionList"
+      />
+      <datalist id="descriptionList"></datalist>
+      <button class="button_search">Search</button>
     </div>
     <div class="app"></div>
     <div class="modal-add-task">

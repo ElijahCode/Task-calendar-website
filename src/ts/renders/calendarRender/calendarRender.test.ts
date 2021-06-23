@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { calendarRender } from "./calendarRender";
-import "../types";
+import "../../types";
 
 const layout = document.createElement("div");
 layout.innerHTML = `

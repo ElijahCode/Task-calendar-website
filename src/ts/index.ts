@@ -1,19 +1,22 @@
 import { createRouter } from "@elijahcode/router";
 import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { configureStore } from "@reduxjs/toolkit";
+import { fuzzySearchCreator } from "./fuzzy-searchFunCreator/fuzzy-searchFunCreator";
 import { storeReducerCreator } from "./storeReducer/storeReducer";
 import { loadTaskListFromStorageActionCreator } from "./actions/actions";
-import { calendarRender } from "./renders/calendarRender";
-import { listRender } from "./renders/listRender";
-import { aboutRender } from "./renders/aboutRender";
+import { calendarRender } from "./renders/calendarRender/calendarRender";
+import { listRender } from "./renders/listRender/listRender";
+import { aboutRender } from "./renders/aboutRender/aboutRender";
 import {
   closeModalAddTask,
   closeModalChangeTask,
   closeModalDeleteTask,
 } from "./handlers/modalWindow/closeModal";
-import { addTaskHandler } from "./handlers/addTaskHandler";
-import { createUpdateTaskFunction } from "./handlers/updateTaskHandler";
-import { createDeleteTaskFunction } from "./handlers/deleteTask";
+import { addTaskHandler } from "./handlers/taskHandlers/addTaskHandler";
+import { createSearchHandler } from "./handlers/searchHandlers/createSearchHandler";
+import { createInputAutoCompleteHandler } from "./handlers/searchHandlers/createInputAutoCompleteHandler";
+import { createUpdateTaskFunction } from "./handlers/taskHandlers/updateTaskHandler";
+import { createDeleteTaskFunction } from "./handlers/taskHandlers/deleteTask";
 import "./css/style.css";
 
 (async function main() {
@@ -29,6 +32,9 @@ import "./css/style.css";
 
   const updateTask = createUpdateTaskFunction(store, localTaskStorage);
   const deleteTask = createDeleteTaskFunction(store, localTaskStorage);
+
+  const searchHandler = createSearchHandler(store, router);
+  const inputAutoCompleteHandler = createInputAutoCompleteHandler(store);
 
   store.dispatch(loadTaskListFromStorageActionCreator(tasks as Task[]));
 
@@ -71,6 +77,22 @@ import "./css/style.css";
       }
     }
   });
+
+  document
+    .querySelector(".button_search")
+    .addEventListener("click", searchHandler);
+
+  document
+    .querySelector(".searchInput")
+    .addEventListener("keydown", (event) => {
+      if ((event as KeyboardEvent).code === "Enter") {
+        searchHandler();
+      }
+    });
+
+  document
+    .querySelector(".searchInput")
+    .addEventListener("input", inputAutoCompleteHandler);
 
   (document.querySelector(
     ".button-add-task"

@@ -1,8 +1,8 @@
 import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { EnhancedStore } from "@reduxjs/toolkit";
-import { closeModalAddTask } from "./modalWindow/closeModal";
-import { addTaskActionCreator } from "../actions/actions";
-import { createID } from "../createID/createID";
+import { closeModalAddTask } from "../modalWindow/closeModal";
+import { addTaskActionCreator } from "../../actions/actions";
+import { createID } from "../../createID/createID";
 
 export async function addTaskHandler(
   store: EnhancedStore,

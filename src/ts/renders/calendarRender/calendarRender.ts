@@ -1,6 +1,6 @@
 import { EnhancedStore } from "@reduxjs/toolkit";
-import { activateModalAddTask } from "../handlers/modalWindow/activateModal";
-import { createCalendarSwitchers } from "../handlers/calendarSwitcher/calendarSwithcer";
+import { activateModalAddTask } from "../../handlers/modalWindow/activateModal";
+import { createCalendarSwitchers } from "../../handlers/calendarSwitcher/calendarSwithcer";
 
 export function calendarRender(store: EnhancedStore, date?: number): void {
   const months = [

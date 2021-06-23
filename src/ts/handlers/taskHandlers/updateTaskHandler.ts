@@ -1,8 +1,8 @@
 import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { EnhancedStore } from "@reduxjs/toolkit";
-import { updateTaskActionCreator } from "../actions/actions";
-import { closeModalChangeTask } from "../handlers/modalWindow/closeModal";
-import { taskListRender } from "../renders/taskListRender";
+import { updateTaskActionCreator } from "../../actions/actions";
+import { closeModalChangeTask } from "../modalWindow/closeModal";
+import { taskListRender } from "../../renders/listRender/taskListRender";
 
 export async function createUpdateTaskFunction(
   store: EnhancedStore,

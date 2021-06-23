@@ -1,6 +1,6 @@
 import { HistoryRouter } from "@elijahcode/router/dist/HistoryRouter/HistoryRouter";
 import { EnhancedStore } from "@reduxjs/toolkit";
-import { filterBlockRender } from "./filterBlockRender";
+import { filterBlockRender } from "../listRender/filterBlockRender";
 import { taskListRender } from "./taskListRender";
 
 export function listRender(store: EnhancedStore, router: HistoryRouter): void {

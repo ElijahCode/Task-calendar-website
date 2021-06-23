@@ -1,5 +1,5 @@
 import { EnhancedStore } from "@reduxjs/toolkit";
-import { calendarRender } from "../../renders/calendarRender";
+import { calendarRender } from "../../renders/calendarRender/calendarRender";
 
 export function createCalendarSwitchers(store: EnhancedStore, date: Date) {
   function incrementer(): void {

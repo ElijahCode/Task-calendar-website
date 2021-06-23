@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { taskListRender } from "./taskListRender";
-import "../types";
+import "../../types";
 
 document.body.innerHTML = `
 <div class="app"></div>

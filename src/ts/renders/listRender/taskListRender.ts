@@ -1,8 +1,7 @@
-import { EnhancedStore } from "@reduxjs/toolkit";
 import {
   activateModalChangeTask,
   activateModalDeleteTask,
-} from "../handlers/modalWindow/activateModal";
+} from "../../handlers/modalWindow/activateModal";
 
 export function taskListRender(state: State): void {
   const months = [
