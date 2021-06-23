@@ -1,11 +1,12 @@
+import { HistoryRouter } from "@elijahcode/router/dist/HistoryRouter/HistoryRouter";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { filterBlockRender } from "./filterBlockRender";
 import { taskListRender } from "./taskListRender";
 
-export function listRender(store: EnhancedStore): void {
+export function listRender(store: EnhancedStore, router: HistoryRouter): void {
   const appBlock = document.querySelector(".app");
   appBlock.innerHTML = "";
 
-  filterBlockRender(store);
+  filterBlockRender(store, router);
   taskListRender(store.getState());
 }

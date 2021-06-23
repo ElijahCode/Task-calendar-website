@@ -45,7 +45,14 @@ import "./css/style.css";
         calendarRender(store);
         break;
       case "/list":
-        listRender(store.getState());
+        listRender(store, router);
+        break;
+      case "/list/showAll":
+        listRender(store, router);
+        break;
+      case "/list/showDone":
+        listRender(store, router);
+        document.getElementById("Case2").click();
         break;
       default:
         aboutRender();
@@ -58,7 +65,7 @@ import "./css/style.css";
       const url = (ev.target as HTMLElement).getAttribute("href");
 
       if (url === "/list") {
-        router.go(url, { onEnter: [store] });
+        router.go(url, { onEnter: [store, router] });
       } else {
         router.go(url);
       }
