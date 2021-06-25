@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/webpack-gh-pages/",
+    publicPath: "/Task-calendar-website/",
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
