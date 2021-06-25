@@ -63,15 +63,18 @@ export function taskListRender(state: State): void {
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("button-delete-this-task");
-    deleteButton.innerText = "Delete Task";
+    deleteButton.innerHTML =
+      "<img src='https://image.flaticon.com/icons/png/512/4974/4974939.png'>";
 
-    taskItemBlock.append(
-      taskDateHeader,
-      taskDescription,
-      taskStatus,
-      taskTag,
-      deleteButton
-    );
+    const supportBlock1 = document.createElement("div");
+    supportBlock1.classList.add("app_list_supportBlock1");
+    supportBlock1.append(taskDateHeader, taskDescription, taskStatus, taskTag);
+
+    const supportBlock2 = document.createElement("div");
+    supportBlock2.classList.add("app_list_supportBlock2");
+    supportBlock2.append(deleteButton);
+
+    taskItemBlock.append(supportBlock1, supportBlock2);
     list.append(taskItemBlock);
   });
 

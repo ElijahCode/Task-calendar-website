@@ -3,20 +3,24 @@
     <title>Task calendar</title>
   </head>
   <body>
-    <nav>
-      <a href="/calendar">Calendar</a>
-      <a href="/list">List</a>
-      <a href="/about">About</a>
+    <nav class="navigationBlock">
+      <div>
+        <a href="/calendar">Calendar</a>
+        <a href="/list">List</a>
+        <a href="/about">About</a>
+      </div>
     </nav>
     <div class="searchBlock">
-      <input
-        type="search"
-        class="searchInput"
-        placeholder="Enter a task description"
-        list="descriptionList"
-      />
-      <datalist id="descriptionList"></datalist>
-      <button class="button_search">Search</button>
+      <div>
+        <input
+          type="search"
+          class="searchInput"
+          placeholder="Enter a task description"
+          list="descriptionList"
+        />
+        <datalist id="descriptionList"></datalist>
+        <button class="button_search">Search</button>
+      </div>
     </div>
     <div class="app"></div>
     <div class="modal-choose-action">

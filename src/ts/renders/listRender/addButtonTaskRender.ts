@@ -5,6 +5,7 @@ export function addButtonTaskRender(): void {
   const button: HTMLButtonElement = document.createElement("button");
 
   button.addEventListener("click", activateModalAddTask);
+  button.classList.add("app_list_add_task_button");
   button.innerHTML = "Add task";
 
   appBlock.append(button);
