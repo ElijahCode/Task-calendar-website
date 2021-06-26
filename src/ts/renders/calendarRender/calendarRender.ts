@@ -94,7 +94,12 @@ export function calendarRender(store: EnhancedStore, date?: number): void {
   }
 
   table.addEventListener("click", (event) => {
-    if (!(event.target as HTMLElement).matches("img")) {
+    if (
+      !(
+        (event.target as HTMLElement).matches("img") ||
+        (event.target as HTMLElement).matches("button")
+      )
+    ) {
       console.log(event.target);
       activateModalChooseAction(event);
     }
