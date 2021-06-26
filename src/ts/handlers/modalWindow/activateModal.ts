@@ -50,13 +50,13 @@ export function activateModalAddTask(ev): void {
 export function activateModalChangeTask(event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-change-task");
   modal.style.visibility = "visible";
-  const taskBlockID = (event.target as HTMLElement).closest("div").id;
+  const taskBlockID = (event.target as HTMLElement).closest(".taskItem").id;
   document.querySelector(".button-change-task").id = taskBlockID;
 }
 
 export function activateModalDeleteTask(event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-delete-task");
   modal.style.visibility = "visible";
-  const taskBlockID = (event.target as HTMLElement).closest("div").id;
+  const taskBlockID = (event.target as HTMLElement).closest(".taskItem").id;
   document.querySelector(".button-delete-task").id = taskBlockID;
 }

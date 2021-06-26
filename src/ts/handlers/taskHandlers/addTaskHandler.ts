@@ -3,6 +3,7 @@ import { EnhancedStore } from "@reduxjs/toolkit";
 import { closeModalAddTask } from "../modalWindow/closeModal";
 import { addTaskActionCreator } from "../../actions/actions";
 import { taskListRender } from "../../renders/listRender/taskListRender";
+import { calendarRender } from "../../renders/calendarRender/calendarRender";
 import { createID } from "../../createID/createID";
 
 export async function addTaskHandler(
@@ -43,5 +44,14 @@ export async function addTaskHandler(
 
   if (document.querySelector(".taskList")) {
     taskListRender(store.getState());
+  }
+
+  const normalizeToParseDate =
+    newTask.date.split(" ").length > 1
+      ? newTask.date.split(" ").join("T")
+      : newTask.date;
+
+  if (document.querySelector(".calendarTable")) {
+    calendarRender(store, Date.parse(normalizeToParseDate));
   }
 }

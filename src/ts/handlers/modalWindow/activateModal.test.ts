@@ -9,8 +9,8 @@ layout.innerHTML = `<div class = "modal-add-task"></div>
 <div class = "modal-change-task"></div>
 <div class = "modal-delete-task"></div><div class="tableCaption">June 2021</div>
 <input class="modal-add-task-input-date" value="">
-<button class=button-change-task></button>
-<button class=button-delete-task></button>`;
+<div class='taskItem'><button class=button-change-task></button></div>
+<div class="taskItem"><button class=button-delete-task></button>`;
 document.body.append(layout);
 
 const addTaskDiv: HTMLDivElement = document.querySelector(".modal-add-task");
@@ -43,6 +43,7 @@ describe("Test activate function", () => {
   });
   it("Test chagneModalFunction", () => {
     const targetParent = document.createElement("div");
+    targetParent.classList.add("taskItem");
     targetParent.id = "5";
     const targetBut = document.createElement("button");
     targetParent.append(targetBut);
@@ -55,6 +56,7 @@ describe("Test activate function", () => {
   });
   it("Test deleteModalFunction", () => {
     const targetParent = document.createElement("div");
+    targetParent.classList.add("taskItem");
     targetParent.id = "5";
     const targetBut = document.createElement("button");
     targetParent.append(targetBut);

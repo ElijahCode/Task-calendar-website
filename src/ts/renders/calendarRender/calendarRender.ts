@@ -58,12 +58,13 @@ export function calendarRender(store: EnhancedStore, date?: number): void {
   while (workDate.getMonth() === insideDate.getMonth()) {
     if (
       workDate.getDate() === 1 ||
-      table.rows[table.rows.length - 1].cells[6].innerText !== ""
+      table.rows[table.rows.length - 1].cells[6].innerText.toString() !== ""
     ) {
       const newRow = table.insertRow();
       newRow.classList.add("row_day");
       for (let i = 0; i < 7; i += 1) {
         const newCell = newRow.insertCell();
+        newCell.innerText = "";
         newCell.classList.add("cell_empty");
       }
     }

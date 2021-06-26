@@ -79,12 +79,20 @@ export function taskListRender(state: State): void {
   });
 
   list.addEventListener("click", (event) => {
-    if (!(event.target as HTMLElement).matches("button")) {
+    if (
+      !(
+        (event.target as HTMLElement).matches("button") ||
+        (event.target as HTMLElement).matches("img")
+      )
+    ) {
       activateModalChangeTask(event);
     }
   });
   list.addEventListener("click", (event) => {
-    if ((event.target as HTMLElement).matches("button")) {
+    if (
+      (event.target as HTMLElement).matches("button") ||
+      (event.target as HTMLElement).matches("img")
+    ) {
       activateModalDeleteTask(event);
     }
   });

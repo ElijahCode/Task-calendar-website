@@ -61,6 +61,7 @@ describe("Testing calenderRender function", () => {
     expect(table.rows[0].cells.length).toBe(7);
 
     expect(document.querySelectorAll(".cell_date").length).toBe(30);
+    expect(document.querySelectorAll(".cell_empty").length).toBe(5);
   });
 
   it("Testing render with influence of state", () => {

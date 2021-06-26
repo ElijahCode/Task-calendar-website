@@ -33,7 +33,7 @@ import "./css/style.css";
   });
 
   const updateTask = createUpdateTaskFunction(store, localTaskStorage);
-  const deleteTask = createDeleteTaskFunction(store, localTaskStorage);
+  const deleteTask = createDeleteTaskFunction(store, localTaskStorage, router);
 
   const searchHandler = createSearchHandler(store, router);
   const inputAutoCompleteHandler = createInputAutoCompleteHandler(store);
