@@ -9,7 +9,7 @@ export function filterBlockRender(
   const state = store.getState();
   const appBlock = document.querySelector(".app");
   const filterBlock = document.createElement("div");
-  filterBlock.innerHTML = `<div class="fliterBlock"><input type="radio" value="NotFiltered" name="CheckBox" id="Case1"><label for="Case1">Show all</label><input type="radio" value="filteredByStatus_done" name="CheckBox" id="Case2"><label for="Case2">Show done</label></div>`;
+  filterBlock.innerHTML = `<div class="filterBlock"><input type="radio" value="NotFiltered" name="CheckBox" id="Case1"><label for="Case1">Show all</label><input type="radio" value="filteredByStatus_done" name="CheckBox" id="Case2"><label for="Case2">Show done</label></div>`;
 
   filterBlock.addEventListener("click", (event) => {
     const target = event.target as HTMLInputElement;

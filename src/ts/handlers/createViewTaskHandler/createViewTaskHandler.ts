@@ -23,19 +23,29 @@ export function createViewTaskHandler(
       "December",
     ];
 
-    const tableCaption: HTMLTableCaptionElement = document.querySelector(
-      ".tableCaption"
-    );
+    let month;
+    let numberOfMonth;
+    let year;
 
     let day = (event.target as HTMLTableCellElement).id;
     day = day.length > 1 ? day : 0 + day;
 
-    const [month, year] = tableCaption.innerHTML
-      .match(/([a-zA-Z]{1,} [0-9]{4})/gm)[0]
-      .split(" ");
-    let numberOfMonth = (months.indexOf(month) + 1).toString();
-    numberOfMonth =
-      numberOfMonth.length > 1 ? numberOfMonth : 0 + numberOfMonth;
+    const tableCaption: HTMLTableCaptionElement = document.querySelector(
+      ".tableCaption"
+    );
+
+    if (tableCaption) {
+      [month, year] = tableCaption.innerHTML
+        .match(/([a-zA-Z]{1,} [0-9]{4})/gm)[0]
+        .split(" ");
+      numberOfMonth = (months.indexOf(month) + 1).toString();
+      numberOfMonth =
+        numberOfMonth.length > 1 ? numberOfMonth : 0 + numberOfMonth;
+    } else {
+      [year, month] = event.target.date.split(" ")[0].split("-");
+      numberOfMonth = month;
+    }
+
     const date = `${year}-${numberOfMonth}-${day}`;
 
     const state = store.getState().filter((el: Task) => {
@@ -44,10 +54,18 @@ export function createViewTaskHandler(
       }
       return false;
     });
-    if (state.length > 0) {
+    if (tableCaption && state.length > 0) {
       listRender(store, router);
       taskListRender(state);
       router.go(`/list/task-at-${date}`);
+    } else if (state.length > 0) {
+      listRender(store, router);
+      taskListRender(
+        state.filter(
+          (el: Task) =>
+            el.date.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/gm)[0] === date
+        )
+      );
     } else {
       document.querySelector(
         ".app"

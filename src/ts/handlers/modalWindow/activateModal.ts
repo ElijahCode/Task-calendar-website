@@ -1,6 +1,11 @@
 export function activateModalChooseAction(ev): void {
   const modal: HTMLDivElement = document.querySelector(".modal-choose-action");
-  modal.style.visibility = "visible";
+  modal.classList.add("modal_active");
+  modal.classList.remove("modal_closed");
+
+  const modalOverlay: HTMLDivElement = document.querySelector(".modal-overlay");
+  modalOverlay.classList.remove("modal_overlay_closed");
+  modalOverlay.classList.add("modal_overlay_active");
 
   document.querySelector(".modal-choose-action-button-add").id =
     ev.target.innerText;
@@ -24,7 +29,18 @@ export function activateModalAddTask(ev): void {
     "December",
   ];
   const modal: HTMLDivElement = document.querySelector(".modal-add-task");
-  modal.style.visibility = "visible";
+  modal.classList.add("modal_active");
+  modal.classList.remove("modal_closed");
+
+  const modalOverlay: HTMLDivElement = document.querySelector(".modal-overlay");
+  modalOverlay.classList.replace(
+    "modal_overlay_closed",
+    "modal_overlay_active"
+  );
+  // modalOverlay.classList.remove("modal_overlay_closed");
+  // console.log(modalOverlay.classList)
+  // modalOverlay.classList.add("modal_overlay_active");
+  // console.log(modalOverlay.classList)
 
   const inputDate: HTMLInputElement = document.querySelector(
     ".modal-add-task-input-date"
@@ -49,14 +65,24 @@ export function activateModalAddTask(ev): void {
 
 export function activateModalChangeTask(event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-change-task");
-  modal.style.visibility = "visible";
+  modal.classList.add("modal_active");
+  modal.classList.remove("modal_closed");
+
+  const modalOverlay: HTMLDivElement = document.querySelector(".modal-overlay");
+  modalOverlay.classList.remove("modal_overlay_closed");
+  modalOverlay.classList.add("modal_overlay_active");
   const taskBlockID = (event.target as HTMLElement).closest(".taskItem").id;
   document.querySelector(".button-change-task").id = taskBlockID;
 }
 
 export function activateModalDeleteTask(event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-delete-task");
-  modal.style.visibility = "visible";
+  modal.classList.add("modal_active");
+  modal.classList.remove("modal_closed");
+
+  const modalOverlay: HTMLDivElement = document.querySelector(".modal-overlay");
+  modalOverlay.classList.remove("modal_overlay_closed");
+  modalOverlay.classList.add("modal_overlay_active");
   const taskBlockID = (event.target as HTMLElement).closest(".taskItem").id;
   document.querySelector(".button-delete-task").id = taskBlockID;
 }

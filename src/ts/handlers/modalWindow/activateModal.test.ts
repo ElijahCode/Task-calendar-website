@@ -10,7 +10,8 @@ layout.innerHTML = `<div class = "modal-add-task"></div>
 <div class = "modal-delete-task"></div><div class="tableCaption">June 2021</div>
 <input class="modal-add-task-input-date" value="">
 <div class='taskItem'><button class=button-change-task></button></div>
-<div class="taskItem"><button class=button-delete-task></button>`;
+<div class="taskItem"><button class=button-delete-task></button>
+<div class="modal-overlay"></div>`;
 document.body.append(layout);
 
 const addTaskDiv: HTMLDivElement = document.querySelector(".modal-add-task");
@@ -35,7 +36,8 @@ describe("Test activate function", () => {
     };
 
     activateModalAddTask(ev);
-    expect(addTaskDiv.style.visibility).toBe("visible");
+    expect(addTaskDiv.classList.contains("modal_active")).toBeTruthy();
+    expect(addTaskDiv.classList.contains("modal_closed")).toBeFalsy();
     expect(
       (document.querySelector(".modal-add-task-input-date") as HTMLInputElement)
         .value
@@ -52,7 +54,8 @@ describe("Test activate function", () => {
       target: targetBut,
     };
     activateModalChangeTask(event);
-    expect(changeTaskDiv.style.visibility).toBe("visible");
+    expect(changeTaskDiv.classList.contains("modal_active")).toBeTruthy();
+    expect(changeTaskDiv.classList.contains("modal_closed")).toBeFalsy();
   });
   it("Test deleteModalFunction", () => {
     const targetParent = document.createElement("div");
@@ -65,6 +68,7 @@ describe("Test activate function", () => {
       target: targetBut,
     };
     activateModalDeleteTask(event);
-    expect(deleteTaskDiv.style.visibility).toBe("visible");
+    expect(deleteTaskDiv.classList.contains("modal_active")).toBeTruthy();
+    expect(deleteTaskDiv.classList.contains("modal_closed")).toBeFalsy();
   });
 });

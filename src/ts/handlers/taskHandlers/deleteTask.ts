@@ -20,6 +20,7 @@ export function createDeleteTaskFunction(
     const path = location.pathname;
     const eventMock = {
       target: {
+        date: deletedTask.date,
         id: deletedTask.date
           .match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/)[0]
           .split("-")[2],
@@ -27,7 +28,7 @@ export function createDeleteTaskFunction(
     };
 
     if (/task-at/.test(path)) {
-      taskListRender(store.getState());
+      createViewTaskHandler(store, router)(eventMock);
     } else if (path === "/list") {
       taskListRender(store.getState());
     }

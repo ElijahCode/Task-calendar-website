@@ -29,15 +29,19 @@ export function calendarRender(store: EnhancedStore, date?: number): void {
   ];
   const state = store.getState();
 
+  // if(document.querySelector('.calendarTable')){
+  //   document.querySelector('.app').innerHTML = ''
+  // }
+
   const insideDate = date !== undefined ? new Date(date) : new Date();
   const table: HTMLTableElement = document.createElement("table");
   table.classList.add("calendarTable");
 
   const tableCaption = table.createCaption();
   tableCaption.classList.add("tableCaption");
-  tableCaption.innerHTML = `<button class = "button_goBack">&lArr;</button><p class=tableCaptionText>${
+  tableCaption.innerHTML = `<button class = "button_goBack"><img src="https://image.flaticon.com/icons/png/512/481/481158.png"></button><p class=tableCaptionText>${
     months[insideDate.getMonth()]
-  } ${insideDate.getFullYear()}</p><button class = "button_goForward">&rArr;</button>`;
+  } ${insideDate.getFullYear()}</p><button class = "button_goForward"><img src="https://image.flaticon.com/icons/png/512/481/481157.png"></button>`;
 
   table.insertRow();
   table.rows[0].classList.add("row_daysOfWeek");
@@ -74,8 +78,13 @@ export function calendarRender(store: EnhancedStore, date?: number): void {
     changedCell.classList.remove("cell_empty");
     if (
       state &&
-      state.filter((el) => new Date(el.date).getDate() === workDate.getDate())
-        .length > 0
+      state.filter((el) => {
+        // new Date(el.date) === workDate).length > 0
+        const stringWorkDate = `${workDate.getFullYear()}-${workDate.getMonth()}-${workDate.getDate()}`;
+        const elDate = new Date(Date.parse(el.date));
+        const stringELDate = `${elDate.getFullYear()}-${elDate.getMonth()}-${elDate.getDate()}`;
+        return stringWorkDate === stringELDate;
+      }).length > 0
     ) {
       changedCell.classList.add("cell_haveTask");
     } else {
@@ -85,7 +94,8 @@ export function calendarRender(store: EnhancedStore, date?: number): void {
   }
 
   table.addEventListener("click", (event) => {
-    if (!(event.target as HTMLElement).matches("button")) {
+    if (!(event.target as HTMLElement).matches("img")) {
+      console.log(event.target);
       activateModalChooseAction(event);
     }
   });

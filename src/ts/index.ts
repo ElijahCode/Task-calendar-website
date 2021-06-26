@@ -108,8 +108,8 @@ import "./css/style.css";
   document
     .querySelector(".modal-choose-action-button-add")
     .addEventListener("click", (event) => {
-      activateModalAddTask(event);
       closeModalChooseAction();
+      activateModalAddTask(event);
     });
 
   document
@@ -140,4 +140,16 @@ import "./css/style.css";
   document
     .querySelector(".button-delete-task-cancel")
     .addEventListener("click", closeModalDeleteTask);
+
+  document.querySelector(".modal-overlay").addEventListener("click", () => {
+    closeModalChooseAction();
+    closeModalAddTask();
+    closeModalChangeTask();
+    closeModalDeleteTask();
+  });
+
+  closeModalChooseAction();
+  closeModalAddTask();
+  closeModalChangeTask();
+  closeModalDeleteTask();
 })();
