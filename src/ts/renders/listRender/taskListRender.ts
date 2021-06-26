@@ -82,7 +82,8 @@ export function taskListRender(state: State): void {
     if (
       !(
         (event.target as HTMLElement).matches("button") ||
-        (event.target as HTMLElement).matches("img")
+        (event.target as HTMLElement).matches("img") ||
+        (event.target as HTMLElement).matches(".taskList")
       )
     ) {
       activateModalChangeTask(event);

@@ -125,7 +125,10 @@ import "./css/style.css";
 
   document
     .querySelector(".button-delete-task")
-    .addEventListener("click", await deleteTask);
+    .addEventListener("click", async (event) => {
+      await deleteTask(event);
+      closeModalDeleteTask();
+    });
 
   document
     .querySelector(".modal-choose-action-button-cancel")

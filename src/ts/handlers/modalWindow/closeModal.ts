@@ -14,7 +14,6 @@ export function closeModalAddTask(): void {
   const modalOverlay: HTMLDivElement = document.querySelector(".modal-overlay");
   modalOverlay.classList.remove("modal_overlay_active");
   modalOverlay.classList.add("modal_overlay_closed");
-  console.log(modalOverlay.classList);
 }
 
 export function closeModalChangeTask(): void {

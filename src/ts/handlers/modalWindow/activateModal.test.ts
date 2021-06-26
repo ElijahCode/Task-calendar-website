@@ -41,7 +41,7 @@ describe("Test activate function", () => {
     expect(
       (document.querySelector(".modal-add-task-input-date") as HTMLInputElement)
         .value
-    ).toBe("2021-06-20");
+    ).toBe("2021-06-20 00:00");
   });
   it("Test chagneModalFunction", () => {
     const targetParent = document.createElement("div");

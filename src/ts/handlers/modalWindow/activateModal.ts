@@ -37,10 +37,6 @@ export function activateModalAddTask(ev): void {
     "modal_overlay_closed",
     "modal_overlay_active"
   );
-  // modalOverlay.classList.remove("modal_overlay_closed");
-  // console.log(modalOverlay.classList)
-  // modalOverlay.classList.add("modal_overlay_active");
-  // console.log(modalOverlay.classList)
 
   const inputDate: HTMLInputElement = document.querySelector(
     ".modal-add-task-input-date"
@@ -59,7 +55,7 @@ export function activateModalAddTask(ev): void {
     let numberOfMonth = (months.indexOf(month) + 1).toString();
     numberOfMonth =
       numberOfMonth.length > 1 ? numberOfMonth : 0 + numberOfMonth;
-    inputDate.value = `${year}-${numberOfMonth}-${day}`;
+    inputDate.value = `${year}-${numberOfMonth}-${day} 00:00`;
   }
 }
 
