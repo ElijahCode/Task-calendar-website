@@ -4,7 +4,7 @@ import { closeModalAddTask } from "../modalWindow/closeModal";
 import { addTaskActionCreator } from "../../actions/actions";
 import { taskListRender } from "../../renders/listRender/taskListRender";
 import { calendarRender } from "../../renders/calendarRender/calendarRender";
-import { createID } from "../../createID/createID";
+import { giveIDToTask } from "../../giveIDToTask/giveIDToTask";
 
 export async function addTaskHandler(
   store: EnhancedStore,
@@ -30,7 +30,7 @@ export async function addTaskHandler(
     tag: inputTag.value as Task["tag"],
   };
 
-  newTask = createID(newTask, store);
+  newTask = giveIDToTask(newTask, store);
 
   await localStorage.createTask(newTask);
   store.dispatch(addTaskActionCreator(newTask));

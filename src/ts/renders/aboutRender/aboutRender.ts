@@ -1,6 +1,6 @@
 export function aboutRender(): void {
   const appBlock = document.querySelector(".app");
-
+  appBlock.innerHTML = "";
   const contentBlock = document.createElement("div");
   contentBlock.classList.add("aboutBlock");
 
@@ -19,5 +19,5 @@ export function aboutRender(): void {
 
   contentBlock.append(aboutAuthor, aboutProject, aboutCalendar);
 
-  appBlock.innerHTML = contentBlock.innerHTML;
+  appBlock.append(contentBlock);
 }

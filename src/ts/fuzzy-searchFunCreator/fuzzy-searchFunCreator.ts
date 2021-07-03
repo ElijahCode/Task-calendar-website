@@ -1,5 +1,5 @@
 import { EnhancedStore } from "@reduxjs/toolkit";
-import FuzzySearch from "fuzzy-search";
+import FuzzySearch = require("fuzzy-search");
 
 export function fuzzySearchCreator(store: EnhancedStore): FuzzySearch<Task[]> {
   return new FuzzySearch(store.getState(), ["description"], {

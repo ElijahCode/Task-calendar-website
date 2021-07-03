@@ -7,14 +7,16 @@ import { taskListRender } from "../../renders/listRender/taskListRender";
 export function createSearchHandler(
   store: EnhancedStore,
   router: HistoryRouter
-): any {
+): () => void {
   return () => {
     const searchInput: HTMLInputElement = document.querySelector(
       ".searchInput"
     );
     const searcher = fuzzySearchCreator(store);
 
-    const result: Task[] = searcher.search(searchInput.value);
+    const result: Task[] = (searcher.search(
+      searchInput.value
+    ) as unknown) as Task[];
 
     let url = "";
 
@@ -30,7 +32,7 @@ export function createSearchHandler(
         }
       });
 
-      router.go(`list/${url}`);
+      router.go(`/list/${url}`);
 
       listRender(store, router);
       taskListRender(result);

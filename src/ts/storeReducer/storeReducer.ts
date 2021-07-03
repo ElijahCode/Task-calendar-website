@@ -1,5 +1,4 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import {
   addTaskActionCreator,
   updateTaskActionCreator,
@@ -7,7 +6,7 @@ import {
   loadTaskListFromStorageActionCreator,
 } from "../actions/actions";
 
-export function storeReducerCreator(initState) {
+export function storeReducerCreator(initState: State): any {
   return createReducer(initState, (builder) => {
     builder
       .addCase(addTaskActionCreator, (state, action: Action) => {

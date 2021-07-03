@@ -8,7 +8,7 @@ export async function createUpdateTaskFunction(
   store: EnhancedStore,
   localStorage: LocalStorage.TaskCalendar
 ) {
-  return async function updateTaskHandler(event): Promise<void> {
+  return async function updateTaskHandler(event: Event): Promise<void> {
     const taskID = Number((event.target as HTMLDivElement).id);
     const state: Task[] = store.getState();
     const changedTask = { ...state.filter((el: Task) => el.id === taskID)[0] };

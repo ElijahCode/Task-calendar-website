@@ -10,7 +10,7 @@ export function createDeleteTaskFunction(
   localStorage: LocalStorage.TaskCalendar,
   router: HistoryRouter
 ) {
-  return async (event): Promise<void> => {
+  return async (event: Event): Promise<void> => {
     const taskID = Number((event.target as HTMLDivElement).id);
     const [deletedTask] = store.getState().filter((el) => el.id === taskID);
     await localStorage.delete(taskID);
@@ -28,7 +28,7 @@ export function createDeleteTaskFunction(
     };
 
     if (/task-at/.test(path)) {
-      createViewTaskHandler(store, router)(eventMock);
+      createViewTaskHandler(store, router)((eventMock as unknown) as Event);
     } else if (path === "/list") {
       taskListRender(store.getState());
     }

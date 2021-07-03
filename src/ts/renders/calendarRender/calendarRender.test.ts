@@ -35,14 +35,14 @@ const state: State = [
 
 const store = configureStore({
   preloadedState: state,
-  reducer: (storageState, action) => storageState,
+  reducer: (storageState) => storageState,
 });
 
 store.dispatch({ type: "SOME_ACTION" });
 
 const emptyStore = configureStore({
   preloadedState: [],
-  reducer: (storageState, action) => storageState,
+  reducer: (storageState) => storageState,
 });
 
 describe("Testing calenderRender function", () => {
@@ -65,7 +65,7 @@ describe("Testing calenderRender function", () => {
   });
 
   it("Testing render with influence of state", () => {
-    calendarRender(store);
+    calendarRender(store, inputDate);
 
     expect(document.querySelectorAll(".cell_haveTask").length).toBe(3);
   });

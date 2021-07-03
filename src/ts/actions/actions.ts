@@ -1,4 +1,3 @@
-import { LocalStorage } from "@elijahcode/taskcalendarapi";
 import { createAction } from "@reduxjs/toolkit";
 
 export const addTaskActionCreator = createAction<Task>("ADD_TASK");

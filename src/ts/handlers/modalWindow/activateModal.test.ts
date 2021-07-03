@@ -35,7 +35,7 @@ describe("Test activate function", () => {
       target: elem,
     };
 
-    activateModalAddTask(ev);
+    activateModalAddTask((ev as unknown) as Event);
     expect(addTaskDiv.classList.contains("modal_active")).toBeTruthy();
     expect(addTaskDiv.classList.contains("modal_closed")).toBeFalsy();
     expect(
@@ -53,7 +53,7 @@ describe("Test activate function", () => {
     const event = {
       target: targetBut,
     };
-    activateModalChangeTask(event);
+    activateModalChangeTask((event as unknown) as Event);
     expect(changeTaskDiv.classList.contains("modal_active")).toBeTruthy();
     expect(changeTaskDiv.classList.contains("modal_closed")).toBeFalsy();
   });
@@ -67,7 +67,7 @@ describe("Test activate function", () => {
     const event = {
       target: targetBut,
     };
-    activateModalDeleteTask(event);
+    activateModalDeleteTask((event as unknown) as Event);
     expect(deleteTaskDiv.classList.contains("modal_active")).toBeTruthy();
     expect(deleteTaskDiv.classList.contains("modal_closed")).toBeFalsy();
   });

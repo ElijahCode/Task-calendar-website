@@ -1,11 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
 import { taskListRender } from "./taskListRender";
 import "../../types";
 
 document.body.innerHTML = `
 <div class="app"></div>
 `;
-// 2021-05-10
 const state: State = [
   {
     date: "2021-06-10",
@@ -22,11 +20,6 @@ const state: State = [
     id: 2,
   },
 ];
-
-const store = configureStore({
-  preloadedState: state,
-  reducer: (newState, action) => state,
-});
 
 const result = `<div class="taskItem" id="1"><div class="app_list_supportBlock1"><p class="taskDateHeader">10 June 2021 00:00</p><p class="taskDescription">Description: Call friend</p><p class="taskStatus">Status: done</p><p class="taskTag">Tag: low priority</p></div><div class="app_list_supportBlock2"><button class="button-delete-this-task"><img src="https://image.flaticon.com/icons/png/512/4974/4974939.png"></button></div></div><div class="taskItem" id="2"><div class="app_list_supportBlock1"><p class="taskDateHeader">15 June 2021 00:00</p><p class="taskDescription">Description: Call sister</p><p class="taskStatus">Status: in work</p><p class="taskTag">Tag: high priority</p></div><div class="app_list_supportBlock2"><button class="button-delete-this-task"><img src="https://image.flaticon.com/icons/png/512/4974/4974939.png"></button></div></div>`;
 

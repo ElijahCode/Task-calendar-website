@@ -2,10 +2,10 @@ import { EnhancedStore } from "@reduxjs/toolkit";
 import { fuzzySearchCreator } from "../../fuzzy-searchFunCreator/fuzzy-searchFunCreator";
 
 export function createInputAutoCompleteHandler(store: EnhancedStore) {
-  return (event: Event) => {
+  return (event: Event): void => {
     const string = (event.target as HTMLInputElement).value;
     const searcher = fuzzySearchCreator(store);
-    const result: Task[] = searcher.search(string);
+    const result: Task[] = (searcher.search(string) as unknown) as Task[];
 
     const dataList = document.getElementById(
       "descriptionList"

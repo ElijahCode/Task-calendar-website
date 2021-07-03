@@ -1,4 +1,4 @@
-export function activateModalChooseAction(ev): void {
+export function activateModalChooseAction(ev: Event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-choose-action");
   modal.classList.add("modal_active");
   modal.classList.remove("modal_closed");
@@ -7,13 +7,15 @@ export function activateModalChooseAction(ev): void {
   modalOverlay.classList.remove("modal_overlay_closed");
   modalOverlay.classList.add("modal_overlay_active");
 
-  document.querySelector(".modal-choose-action-button-add").id =
-    ev.target.innerText;
-  document.querySelector(".modal-choose-action-button-view-or-update").id =
-    ev.target.innerText;
+  document.querySelector(
+    ".modal-choose-action-button-add"
+  ).id = (ev.target as HTMLButtonElement).innerText;
+  document.querySelector(
+    ".modal-choose-action-button-view-or-update"
+  ).id = (ev.target as HTMLButtonElement).innerText;
 }
 
-export function activateModalAddTask(ev): void {
+export function activateModalAddTask(ev: Event): void {
   const months = [
     "January",
     "February",
@@ -59,7 +61,7 @@ export function activateModalAddTask(ev): void {
   }
 }
 
-export function activateModalChangeTask(event): void {
+export function activateModalChangeTask(event: Event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-change-task");
   modal.classList.add("modal_active");
   modal.classList.remove("modal_closed");
@@ -71,7 +73,7 @@ export function activateModalChangeTask(event): void {
   document.querySelector(".button-change-task").id = taskBlockID;
 }
 
-export function activateModalDeleteTask(event): void {
+export function activateModalDeleteTask(event: Event): void {
   const modal: HTMLDivElement = document.querySelector(".modal-delete-task");
   modal.classList.add("modal_active");
   modal.classList.remove("modal_closed");

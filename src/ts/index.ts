@@ -26,7 +26,7 @@ import "./css/style.css";
   const localTaskStorage = new LocalStorage.TaskCalendar();
   const tasks = await localTaskStorage.read();
   const initialState = tasks;
-  const storeReducer = storeReducerCreator(initialState);
+  const storeReducer = storeReducerCreator(initialState as Task[]);
   const store = configureStore({
     reducer: storeReducer,
     preloadedState: initialState,

@@ -1,5 +1,4 @@
-declare interface Task {
-  [key: string]: any;
+declare interface Task extends Record<string, any> {
   date: string;
   description: string;
   status: "in work" | "done" | "waiting to get it in work";
@@ -9,7 +8,10 @@ declare interface Task {
 
 declare type State = Task[];
 
-declare interface Action {
-  [key: string]: any;
+declare interface Action extends Record<string, any> {
   type: string;
+}
+
+declare interface HTMLDivDateElement extends HTMLDivElement {
+  date: string;
 }
