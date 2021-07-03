@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>Task calendar</title>
+  </head>
+  <body>
+    <nav class="navigationBlock">
+      <div>
+        <a href="/calendar">Calendar</a>
+        <a href="/list">List</a>
+        <a href="/about">About</a>
+      </div>
+    </nav>
+    <div class="searchBlock">
+      <div>
+        <input
+          type="search"
+          class="searchInput"
+          placeholder="Enter a task description"
+          list="descriptionList"
+        />
+        <datalist id="descriptionList"></datalist>
+        <button class="button_search">Search</button>
+      </div>
+    </div>
+    <div class="app"></div>
+    <div class="modal-choose-action">
+      <p class="modal-choose-action-parag">What are you want to do:</p>
+      <button class="modal-choose-action-button-add">Add task</button>
+      <button class="modal-choose-action-button-view-or-update">
+        View or edit tasks
+      </button>
+      <button class="modal-choose-action-button-cancel">Cancel</button>
+    </div>
+    <div class="modal-add-task">
+      <p class="modal-add-task-parag">Date:</p>
+      <input
+        type="text"
+        class="modal-add-task-input-date"
+        placeholder="In format YYYY-MM-DD HH:MM"
+      />
+      <p class="modal-add-task-parag">Description:</p>
+      <input type="text" class="modal-add-task-input-description" />
+      <p class="modal-add-task-parag">Status:</p>
+      <input type="text" class="modal-add-task-input-status" />
+      <p class="modal-add-task-parag">Tag:</p>
+      <input type="text" class="modal-add-task-input-tag" />
+      <button class="button-add-task">Add task</button>
+      <button class="button-add-task-cancel">Cancel</button>
+    </div>
+    <div class="modal-change-task">
+      <p class="modal-change-task-parag">Date:</p>
+      <input
+        type="text"
+        class="modal-change-task-input-date"
+        placeholder="In format YYYY-MM-DD HH:MM"
+      />
+      <p class="modal-change-task-parag">Description:</p>
+      <input type="text" class="modal-change-task-input-description" />
+      <p class="modal-change-task-parag">Status:</p>
+      <input type="text" class="modal-change-task-input-status" />
+      <p class="modal-change-task-parag">Tag:</p>
+      <input type="text" class="modal-change-task-input-tag" />
+      <button class="button-change-task">Change task</button>
+      <button class="button-change-task-cancel">Cancel</button>
+    </div>
+    <div class="modal-delete-task">
+      <p class="modal-change-delete-parag">Are you sure?</p>
+      <button class="button-delete-task">Delete task</button>
+      <button class="button-delete-task-cancel">Cancel</button>
+    </div>
+    <div class="modal-overlay"></div>
+  </body>
+</html>

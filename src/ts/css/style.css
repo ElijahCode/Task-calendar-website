@@ -1,0 +1,246 @@
+body {
+  overflow: hidden;
+}
+
+nav {
+  padding: 3px;
+  margin: auto 0;
+}
+
+nav div {
+  width: 20%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+  margin: auto 0;
+}
+
+nav a:hover {
+  text-decoration: black;
+}
+
+.searchBlock {
+  margin: 5px;
+}
+
+.searchBlock div {
+  height: 30px;
+  width: 20%;
+  margin: 0 auto;
+  background-color: hsla(57, 98%, 74%, 1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.searchBlock div input {
+  height: 80%;
+}
+
+.searchBlock div button {
+  height: 80%;
+}
+
+.app {
+  height: 100%;
+}
+
+.calendarTable {
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.calendarTable td {
+  border: 1px solid black;
+  color: black;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.button_goBack img {
+  width: 25px;
+  height: 25px;
+}
+
+.button_goForward img {
+  width: 25px;
+  height: 25px;
+}
+
+.cell_date:hover {
+  background-color: hsla(129, 100%, 91%, 1);
+}
+
+.cell_haveTask {
+  background-color: hsla(223, 100%, 82%, 1);
+}
+
+.cell_haveTask:hover {
+  background-color: hsla(223, 100%, 67%, 1);
+}
+
+.taskItem {
+  border: 2px solid gray;
+}
+
+.tableCaption {
+  border: 1px solid black;
+}
+
+.tableCaption button {
+  width: 5%;
+  display: inline-block;
+  border: none;
+  background-color: white;
+  border-color: none;
+}
+
+.tableCaption button:hover {
+  border: 1px solid hsla(176, 100%, 87%, 1);
+  border-radius: 5px;
+  background-color: hsla(176, 100%, 87%, 1);
+}
+
+.tableCaptionText {
+  width: 55%;
+  display: inline-block;
+  align-content: center;
+}
+
+.buttonBlock {
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.app_list_add_task_button {
+  width: 30%;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+  margin: 5px auto;
+}
+
+.app_list_add_task_button:hover {
+  border: 1px solid black;
+  background-color: hsla(129, 100%, 91%, 1);
+}
+
+.app_list_add_task_button img {
+  width: 25px;
+  height: 25px;
+}
+
+.taskList {
+  width: 60%;
+  margin: 0 auto;
+  padding: 5px;
+  height: 80vh;
+  border: 1px solid black;
+  overflow: auto;
+}
+
+.taskItem {
+  display: flex;
+  padding: 5px;
+}
+
+.taskItem:hover {
+  background-color: hsla(223, 100%, 67%, 1);
+}
+
+.app_list_supportBlock1 {
+  width: 50%;
+}
+.app_list_supportBlock2 {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.button-delete-this-task {
+  border-radius: 100px;
+  border: 1px solid white;
+  background-color: white;
+  width: 40%;
+  height: 70%;
+}
+
+.button-delete-this-task:hover {
+  border-radius: 100px;
+  border: 1px solid hsla(334, 100%, 81%, 1);
+  background-color: hsla(334, 100%, 81%, 1);
+}
+
+.button-delete-this-task img {
+  width: 50px;
+  height: 50px;
+}
+
+.filterBlock {
+  margin: 0 auto;
+  width: 20%;
+}
+
+.modal-add-task {
+  visibility: hidden;
+  padding: 10px;
+}
+.modal-change-task {
+  visibility: hidden;
+  padding: 10px;
+}
+.modal-delete-task {
+  visibility: hidden;
+  padding: 10px;
+}
+.modal-choose-action {
+  visibility: hidden;
+  padding: 10px;
+}
+
+.modal_active {
+  z-index: 2;
+  border: 1px solid black;
+  background-color: white;
+  visibility: visible;
+  position: fixed;
+  height: 50%;
+  width: 50%;
+  top: 25%;
+  left: 25%;
+  transform: translate((-50%, -50%));
+}
+
+.modal_closed {
+  visibility: hidden;
+  position: relative;
+}
+
+.modal_overlay_active {
+  z-index: 1;
+  background-color: hsla(57, 98%, 0%, 0.53);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal_overlay_closed {
+  z-index: 0;
+  background-color: none;
+  position: relative;
+  top: auto;
+  left: auto;
+  width: auto;
+  height: auto;
+}
