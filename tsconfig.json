@@ -8,6 +8,6 @@
   },
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Recommended",
-  "include": ["src/ts/**/*"],
+  "include": ["src/ts/**/**/*"],
   "exclude": ["node_modules", "src/**/*.spec.ts", "src/ts/**/*.test.ts"]
 }
