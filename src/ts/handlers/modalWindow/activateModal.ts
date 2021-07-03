@@ -43,6 +43,15 @@ export function activateModalAddTask(ev: Event): void {
   const inputDate: HTMLInputElement = document.querySelector(
     ".modal-add-task-input-date"
   );
+
+  const inputStatus: HTMLInputElement = document.querySelector(
+    ".modal-add-task-input-status"
+  );
+
+  const inputTag: HTMLInputElement = document.querySelector(
+    ".modal-add-task-input-tag"
+  );
+
   const tableCaption: HTMLTableCaptionElement = document.querySelector(
     ".tableCaption"
   );
@@ -59,6 +68,8 @@ export function activateModalAddTask(ev: Event): void {
       numberOfMonth.length > 1 ? numberOfMonth : 0 + numberOfMonth;
     inputDate.value = `${year}-${numberOfMonth}-${day} 00:00`;
   }
+  inputStatus.value = "In work";
+  inputTag.value = "Regural task";
 }
 
 export function activateModalChangeTask(event: Event): void {

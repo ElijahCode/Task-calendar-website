@@ -9,6 +9,8 @@ layout.innerHTML = `<div class = "modal-add-task"></div>
 <div class = "modal-change-task"></div>
 <div class = "modal-delete-task"></div><div class="tableCaption">June 2021</div>
 <input class="modal-add-task-input-date" value="">
+<input class="modal-add-task-input-status" value="">
+<input class="modal-add-task-input-tag" value="">
 <div class='taskItem'><button class=button-change-task></button></div>
 <div class="taskItem"><button class=button-delete-task></button>
 <div class="modal-overlay"></div>`;

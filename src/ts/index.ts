@@ -20,6 +20,8 @@ import { createUpdateTaskFunction } from "./handlers/taskHandlers/updateTaskHand
 import { createDeleteTaskFunction } from "./handlers/taskHandlers/deleteTask";
 import { createViewTaskHandler } from "./handlers/createViewTaskHandler/createViewTaskHandler";
 import "./css/style.css";
+import { taskListRender } from "./renders/listRender/taskListRender";
+import { getDoneTasks } from "./getDoneTasks/getDoneTasks";
 
 (async function main() {
   const router = createRouter("history");
@@ -61,10 +63,13 @@ import "./css/style.css";
         break;
       case "/list/showDone":
         listRender(store, router);
-        document.getElementById("Case2").click();
+        taskListRender(getDoneTasks(store.getState()));
+        break;
+      case "/about":
+        aboutRender();
         break;
       default:
-        aboutRender();
+        document.querySelector(".app").innerHTML = "";
     }
   };
 
