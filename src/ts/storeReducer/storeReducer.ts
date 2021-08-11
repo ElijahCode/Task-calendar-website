@@ -1,4 +1,4 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createReducer, Reducer } from "@reduxjs/toolkit";
 import {
   addTaskActionCreator,
   updateTaskActionCreator,
@@ -6,7 +6,7 @@ import {
   loadTaskListFromStorageActionCreator,
 } from "../actions/actions";
 
-export function storeReducerCreator(initState: State): any {
+export function storeReducerCreator(initState: State): Reducer {
   return createReducer(initState, (builder) => {
     builder
       .addCase(addTaskActionCreator, (state, action: Action) => {

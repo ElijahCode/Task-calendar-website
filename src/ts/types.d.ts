@@ -1,4 +1,4 @@
-declare interface Task extends Record<string, any> {
+interface Task {
   date: string;
   description: string;
   status: "in work" | "done" | "waiting to get it in work";
@@ -6,12 +6,14 @@ declare interface Task extends Record<string, any> {
   id?: number;
 }
 
-declare type State = Task[];
+type State = Task[];
 
-declare interface Action extends Record<string, any> {
+interface Action {
   type: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  payload: any;
 }
 
-declare interface HTMLDivDateElement extends HTMLDivElement {
+interface HTMLDivDateElement extends HTMLDivElement {
   date: string;
 }
