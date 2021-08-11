@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/ElijahCode/Task-calendar-website/badge.svg?branch=master)](https://coveralls.io/github/ElijahCode/Task-calendar-website?branch=master)
+
 # Task Calendar Web application
 
 At this repostiry placed sorce code for web-site, that contain application which you can use for writing and wathcing your task.
